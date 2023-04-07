@@ -436,9 +436,6 @@
     height: auto;
     margin: 62px auto;
   }
-  .list_song-header {
-    overflow: scroll;
-  }
 
 
   .container_album-hot .content-bar {
@@ -512,7 +509,6 @@
 
 .list_song-header {
     height: 100vh;
-    overflow-y: auto;
     width: 100%;
 }
 
@@ -521,8 +517,6 @@
   font-size: 20px;
   
 }
-
-
 
 
 }
@@ -539,6 +533,10 @@
   }
 
   /* HEADER */
+  .menu-sidebar {
+  
+    top: 4%;
+  }
 
   .header .bars {
     margin-left: 10px;
@@ -701,7 +699,6 @@
 
   .trending-song .list-song .song-trending {
     height: auto;
-    padding: 5px 0;
     width: 85%;
     margin: 0 auto;
   }
@@ -713,7 +710,7 @@
 }
 
   .trending-song .list-song .song-trending .song {
-    padding: 2px;
+    padding: 0px;
   }
 
   .trending-song .list-song .contents-song {
@@ -880,6 +877,7 @@
 
   .play-controls .playlist-song.active {
     height: 440px;
+    
   }
 
   /* User */
@@ -943,7 +941,7 @@
   }
 
   .list_song-header .list .song-group {
-    padding: 10px 15px;
+    padding: 2px 15px;
   }
 
 
@@ -1026,11 +1024,47 @@
     top: 40%;
 
   }
+  .list_song-singer .list .song-group {
+    padding: 6px;
+  }
+
+  .list_song-singer .list .song-group .song-group_left .order,
+  .list_song-singer .list .song-group .song-group_left .title .content-song_album-hot .name-song {
+    font-size: 11px;
+  }
+
+  .list_song-singer .list .song-group .song-group_right .full-time {
+    font-size: 9px;
+  }
+
+  .container_album-hot .content-bar .content-bar_right i,
+  .container_album-hot .content-bar .content-bar_left span {
+    font-size: 11px;
+  }
+
+  .container_singer .list_song-singer {
+    width: 100%;
+  
+  }
+  .container_singer .list_song-singer .list .song-group {
+    padding: 8px 10px;
+  }
+
+  .container_singer .list_song-singer .list .song-group .song-group_left .order {
+  
+    font-size: 10px;
+  }
+  .container_singer .list_song-singer .list .song-group .song-group_left{
+     gap: 15px;
+  }
 }
 
 @media screen and (max-width: 480px) {
   /* Search  */
-
+  .menu-sidebar {
+    top: 5%;
+  
+  }
   .search .box-search {
     width: 100%;
   }
@@ -1062,8 +1096,8 @@
 }
 
   .trending-song .list-song .contents-song .image {
-    width: 50px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     min-width: 35px;
   }
   .box-singer .list-singer .list-singer-item {
@@ -1121,8 +1155,7 @@
   font-size: 6px;
 }
 .list_song-header .list .song-group .song-group_left .order {
-  font-size: 11px;
-  color: var(--color-white);
+  font-size: 9px;
   font-weight: 500;
 }
 .list_song-header .list .song-group .cover .icon {
@@ -1138,4 +1171,75 @@
   gap: 9px;
 
 }
+
+.trending .trending-song .box-list {
+  height: 200px;
 }
+.trending-song .list-song .contents-song {
+  padding: 0s;
+}
+
+.list_song-singer .list .song-group {
+  padding: 5px 9px;
+}
+.list_song-singer .list .song-group .song-group_left .title .content-song_album-hot .name-song {
+  font-size: 10px;
+  width: 110px;
+}
+
+.list_song-singer .list .song-group .song-group_left .title .content-song_album-hot .singer-name {
+  font-size: 7px;
+}
+.list_song-singer .list .song-group .song-group_right .full-time {
+  font-size: 8px;
+}
+
+.list_song-singer .list .song-group .song-group_left .order {
+  font-size: 10px;
+}
+.list_song-singer .list .song-group .song-group_left .title img {
+  width: 40px;
+}
+
+.list_song-singer .list .song-group .song-group_left .title {
+  min-width: 150px;
+}
+
+.search .search_results .card .content-card .image {
+  height: 35px;
+  width : 35px;
+}
+
+.search .search_results .card .content-card .name-song {
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 17px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: auto;
+  min-width: 100px;
+  width: 50px;
+}
+
+.search .search_results .card .singer-name {
+  width: 50px;
+
+}
+
+.list_song-singer .list .song-group .cover i {
+  margin-right: 4px;
+  font-size: 10px;
+}
+
+.list_song-singer .list .song-group .song-group_right {
+  gap: 4px;
+}
+
+.play-controls .playlist-song.active {
+  width: 300px;
+}
+
+}
+
