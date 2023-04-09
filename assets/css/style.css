@@ -1091,7 +1091,7 @@ input[type="range"]{
 }
 
 .box-singer .list-singer {
-  overflow: auto;
+  overflow-x: scroll;
 }
 
 .box-singer .list-singer .list-singer-item .group-singer {
@@ -2823,7 +2823,7 @@ input[type="range"]{
   cursor: pointer;
 }
 
-.container_singer .list_song-singer .list .song-group {
+.container_singer .list_song-singer .list .song-group-singer {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -2833,7 +2833,7 @@ input[type="range"]{
   transition: var(--transition-3s);
 }
 
-.container_singer .list_song-singer .list .song-group  .song-group_right {
+.container_singer .list_song-singer .list .song-group-singer  .song-group_right {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -2841,14 +2841,14 @@ input[type="range"]{
   
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_right .cover {
+.container_singer .list_song-singer .list .song-group-singer .song-group_right .cover {
   display: none;
   transition: var(--transition-3s);
   line-height: 20px;
   height: 20px;
 }
 
-.container_singer .list_song-singer .list .song-group .cover i {
+.container_singer .list_song-singer .list .song-group-singer .cover i {
   color: rgba(192, 193, 204, 0.762);
   font-size: 18px;
   margin-right: 8px;
@@ -2856,61 +2856,61 @@ input[type="range"]{
   cursor: pointer;
 }
 
-.container_singer .list_song-singer .list .song-group .cover .station {
+.container_singer .list_song-singer .list .song-group-singer .cover .station {
   font-size: 18px;
 
 } 
 
-.container_singer .list_song-singer .list .song-group:hover .song-group_right .cover {
+.container_singer .list_song-singer .list .song-group-singer:hover .song-group_right .cover {
   display: block;
 
 }
 
-.container_singer .list_song-singer .list .song-group:hover {
+.container_singer .list_song-singer .list .song-group-singer:hover {
   background: rgba(73, 67, 66, 0.306);
 }
 
-.container_singer .list_song-singer .list .song-group:hover img {
+.container_singer .list_song-singer .list .song-group-singer:hover img {
   transform: scale(1.1);
 }
 
-.container_singer .list_song-singer .list .song-group:hover .song-group_left .group-order i {
+.container_singer .list_song-singer .list .song-group-singer:hover .song-group_left .group-order i {
   display: block;
 }
 
-.container_singer .list_song-singer .list .song-group:hover .song-group_left .order {
+.container_singer .list_song-singer .list .song-group-singer:hover .song-group_left .order {
   display: none;
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left .group-order {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .group-order {
   width: 10px;
 }
 
-.container_singer .list_song-singer .list .song-group .cover i:hover {
+.container_singer .list_song-singer .list .song-group-singer .cover i:hover {
   color: rgb(255, 255, 255);
   transform: scale(1.1);
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left .order {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .order {
   font-size: 15px;
   color: #c2b6b6;
   font-weight: 500;
   line-height: 10px;
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left .title {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .title {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left .group-order i {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .group-order i {
   color: rgb(218, 204, 204); 
   font-size: 18px;
   transition: var(--transition-3s);
@@ -2918,29 +2918,29 @@ input[type="range"]{
   
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left .group-order i:hover {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .group-order i:hover {
   color: rgb(255, 255, 255); 
   transform: scale(1.1);
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left .title .image {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .title .image {
   width: 50px;
   height: 40px;
   border-radius: 2px;
   overflow: hidden;
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left .title .image img {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .title .image img {
   width: 100%;
   height: 100%;
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left img {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left img {
   object-fit: cover;
   transition: var(--transition-3s);
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left .title .content-song_album-hot {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .title .content-song_album-hot {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -2951,7 +2951,7 @@ input[type="range"]{
 
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_left .title .content-song_album-hot
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .title .content-song_album-hot
   .name-song {
   color: var(--color-white);
   font-weight: 500;
@@ -2963,13 +2963,7 @@ input[type="range"]{
   white-space: nowrap;
 }
 
-.container_singer .list_song-singer
-  .list
-  .song-group
-  .song-group_left
-  .title
-  .content-song_album-hot
-  .singer-name {
+.container_singer .list_song-singer .list .song-group-singer .song-group_left .title .content-song_album-hot .singer-name {
   color: var(--color-singer);
   text-decoration: none;
   font-weight: 500;
@@ -2978,7 +2972,7 @@ input[type="range"]{
   transition: var(--transition-3s);
 }
 
-.container_singer .list_song-singer .list .song-group .song-group_right .full-time {
+.container_singer .list_song-singer .list .song-group-singer .song-group_right .full-time {
   color: #e3d7d7;
   font-size: 12px;
 }

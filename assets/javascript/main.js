@@ -563,11 +563,16 @@ async function musicListeningTask(data, album) {
   const albumVN_page = $(".container_album-hot")
 
   function renderContentSong(num) {
+    
+    console.log(addAlbumSong)
+    console.log(num)
 
     const song_title = addAlbumSong.filter((el) => {
       return el.id == num;
     });
     
+    console.log(song_title)
+
     song_title.forEach((ele) => {
       index = ele.id;
       music.src = ele.song;
@@ -638,7 +643,6 @@ async function musicListeningTask(data, album) {
           }
         }
 
-
         $$(".song-1")[ele.id - 1].classList.add("active");
         renderContentSong(ele.id);
         getListSong(songsNew);
@@ -651,21 +655,25 @@ async function musicListeningTask(data, album) {
 
   // Album hot
   function AlbumHot() {
-      const btnAH_play = $$(".album-hot .icon") 
+      const btnAH_play = $$(".album-hot .icons") 
 
       btnAH_play.forEach( (album, index) => {
         album.onclick = () => {
           isNewSong = false
           isAlbumVN = false
           isTrendingSong = false
-          for (let album of allAlbumHot) {
-            if (album.matches(".active")) {
-              album.classList.remove("active")
-            }
-          }
-          
           allAlbumHot[index].classList.add("active")
           renderAlbumHot(allAlbumHot[index].id)
+        }
+
+        $("body").onclick = (e) => {
+          if (isNewSong == true || isAlbumVN == true || isTrendingSong == true || isSinger == true) {
+            for (let album of allAlbumHot) {
+              if (album.matches(".active")) {
+                album.classList.remove("active")
+              }
+            }
+          }
         }
       })
   }
@@ -687,15 +695,6 @@ async function musicListeningTask(data, album) {
     })
 
     addAlbumSong = nexListSongs
-
-    // if (addAlbumSong !== nexListSongs) {
-    //   for (let album of allAlbumHot) {
-    //     if (album.matches(".active")) {
-    //       album.classList.remove("active")
-    //     }
-    //   }
-    // }
-
     getListSong(addAlbumSong)
     renderContentSong(1);
   }
@@ -734,7 +733,7 @@ async function musicListeningTask(data, album) {
       $$(".play-controls .song")[index - 1].classList.add("active");
       
       if (isAlbumVN == true) {
-        toggleActiveAlbum()
+        toggleActiveAlbumWave()
         $$(".song-group")[index - 1].classList.add("active")
       }
 
@@ -814,8 +813,6 @@ async function musicListeningTask(data, album) {
       btn_random.classList.remove("active");
     };
 
-
-
     // Ngẫu nhiên bài hát
     btn_random.onclick = () => {
       isRandom = !isRandom;
@@ -855,7 +852,6 @@ async function musicListeningTask(data, album) {
       }
     };
 
-
     // Tua bài hát
     progress.oninput = (e) => {
       const seekTime = Math.floor((e.target.value * music.duration) / 100);
@@ -867,9 +863,9 @@ async function musicListeningTask(data, album) {
       if (isRepeat == true) {
         music.play();
       } else {    
-        // if (isAlbumVN == true) {  
-        //     $(".song-group.active").classList.remove("active")
-        // } 
+        if (isAlbumVN == true) {  
+            $(".song-group.active").classList.remove("active")
+        } 
 
         index++
         if (index > addAlbumSong.length) {
@@ -962,7 +958,7 @@ async function musicListeningTask(data, album) {
  
           $("body").onclick = (e) => {
             if (e.target !== ele) {
-              ele.parentElement.querySelector(".btn-options").style.display = "none";       
+              ele.parentElement.querySelector(".btn-options.active").classList.remove("active");
             } 
           }
         }
@@ -991,6 +987,7 @@ async function musicListeningTask(data, album) {
     }
   }
 
+
   function toggleActiveNewSong(index) {
     if (addAlbumSong !== songsNew) {
       isNewSong = false
@@ -1013,7 +1010,7 @@ async function musicListeningTask(data, album) {
     } 
   }
 
-  function toggleActiveAlbum() {
+  function toggleActiveAlbumWave() {
       const allWave = $$(".active2")
 
       for(let i of allWave) {
@@ -1125,7 +1122,7 @@ async function musicListeningTask(data, album) {
     
       const render = newSong.map( (element, index) => {
           return `
-                  <div class="song-group">
+                  <div class="song-group-singer">
                   <div class="song-group_left">
                     <div class="group-order">
                       <i class="icon-play fas fa-play"></i>
@@ -1189,8 +1186,7 @@ async function musicListeningTask(data, album) {
     
     
 
-    const song_group = $$(".song-group")
-
+    const song_group = $$(".container_singer .song-group-singer")
     song_group.forEach( (element, index) => {
 
       const playAVN = element.querySelector(".icon-play")
@@ -1199,6 +1195,7 @@ async function musicListeningTask(data, album) {
       playAVN.onclick= () => {
         isSinger = true
         console.log("sd")
+        console.log(index)
         for(let i of song_group) {
           if (i.matches(".active")) {
             $(".song-group.active").classList.remove("active")
@@ -1263,7 +1260,7 @@ async function musicListeningTask(data, album) {
       }
     })
     
-    addAlbumHot = newAlbum
+    
 
     $("body").style.background = "#1f1d1f"
     const bannerAHVN = document.querySelector(".container_album-hot .content-banner")
@@ -1275,8 +1272,8 @@ async function musicListeningTask(data, album) {
           <p>PLAYLIST</p>
           <h2>${banner.name}</h2>
         </div>
-    
     `
+    
     const renderHTML = newAlbum.map( (element, index) => {
       return `
       <div class="song-group song">
@@ -1332,6 +1329,11 @@ async function musicListeningTask(data, album) {
       
       playAVN.onclick= () => {
         isAlbumVN = true
+        console.log(newAlbum)
+        addAlbumSong = newAlbum
+        
+        
+        console.log("ds")
         for(let i of song_group) {
           if (i.matches(".active")) {
             $(".song-group.active").classList.remove("active")
@@ -1466,7 +1468,6 @@ async function musicListeningTask(data, album) {
       }
     })
     
-    addAlbumSong = newAlbum
     const banner = resRanking.data[id - 1]
 
     $("body").style.background = "#1f1d1f"
@@ -1525,24 +1526,30 @@ async function musicListeningTask(data, album) {
         })
         
         
-    listAlbumVN.innerHTML= renderHTML.join("")
+        listAlbumVN.innerHTML= renderHTML.join("")
         
-    const song_group = $$(".song-group")
+    const song_group = $$(".container_album-hot .song-group")
     const totalABVN = $$(".full-time")
-   
-    totalSong(totalABVN, newAlbum)
 
+    console.log(song_group)
+    
+    totalSong(totalABVN, newAlbum)
+    
     song_group.forEach( (element, index) => {
       const playAVN = element.querySelector(".icon-play")
       
       playAVN.onclick= () => {
+        addAlbumSong = newAlbum
         
         for(let i of song_group) {
           if (i.matches(".active")) {
-            $(".song-group.active").classList.remove("active")
+            i.classList.remove("active")
             $(".play-controls .song.active").classList.remove("active");
           }
         }  
+
+        
+
         renderContentSong(index + 1)
         getListSong(newAlbum)
       }
@@ -1635,6 +1642,7 @@ async function musicListeningTask(data, album) {
 
         btn.onclick = () => {
           isAlbumVN = true
+          isSinger = false
           singer_page.style.display = "none"
           ranking_page.style.display = "none"
           home_page.style.display = "none";
@@ -1754,13 +1762,13 @@ async function musicListeningTask(data, album) {
       items.forEach( play => {
         play.onclick = () => {
           isPlaying = true
-          addAlbumSong = data
-          renderContentSong(data[play.id - 1].id)
-        
+          
           const filterAlbum = data.filter( song => {
             return song.AlbumHot == data[play.id - 1].AlbumHot
           })
-
+          
+          addAlbumSong = data
+          renderContentSong(data[play.id - 1].id)
           const newAlbumHot = filterAlbum.map( (element, index) => {
             return {
               id: index + 1,
@@ -1778,7 +1786,6 @@ async function musicListeningTask(data, album) {
           addAlbumSong = newAlbumHot
 
           getListSong(newAlbumHot)
-
           search_input.value = ""
           search_results.style.display = "none"
         }
@@ -1805,8 +1812,7 @@ async function musicListeningTask(data, album) {
     //   $$(".play-controls .song")[find.id - 1].classList.add("active");
     // }
     // console.log(find.id)
-    console.log(element)
-    console.log($$(".play-controls .song"))
+    
     const map = element.map((el) => {
       return `
             <div class="song" id="${el.id}">
@@ -1907,8 +1913,6 @@ async function musicListeningTask(data, album) {
   }
   star();
 }
-
-
 
 /* ------------New song responsive------------ */
 
